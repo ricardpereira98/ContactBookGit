@@ -124,12 +124,13 @@ public class Main {
         else System.out.println(NAME_NOT_EXIST);
     }
     private static void getName(Scanner in, ContactBook cBook) {
-        String name;
-        name = in.nextLine();
-        if (cBook.hasContact(name)) {
-            System.out.println(cBook.getEmail(name));
+        int number;
+        number = in.nextInt();
+        in.nextLine();
+        if (cBook.hasNumber(number)) {
+            System.out.println(cBook.getName(number));
         }
-        else System.out.println(NAME_NOT_EXIST);
+        else System.out.println(PHONE_NOT_EXIST);
     }
 
     private static void setPhone(Scanner in, ContactBook cBook) {

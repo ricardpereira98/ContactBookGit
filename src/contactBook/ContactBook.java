@@ -1,7 +1,5 @@
 package contactBook;
 
-import contactBook.Contact;
-
 public class ContactBook {
     static final int DEFAULT_SIZE = 100;
 
@@ -17,7 +15,7 @@ public class ContactBook {
 
     //Pre: name != null
     public boolean hasContact(String name) {
-        return searchIndex(name) >= 0;
+        return searchIndexName(name) >= 0;
     }
 
     public int getNumberOfContacts() {
@@ -34,7 +32,7 @@ public class ContactBook {
 
     //Pre: name != null && hasContact(name)
     public void deleteContact(String name) {
-        int index = searchIndex(name);
+        int index = searchIndexName(name);
         for(int i=index; i<counter; i++)
             contacts[i] = contacts[i+1];
         counter--;
@@ -42,25 +40,30 @@ public class ContactBook {
 
     //Pre: name != null && hasContact(name)
     public int getPhone(String name) {
-        return contacts[searchIndex(name)].getPhone();
+        return contacts[searchIndexName(name)].getPhone();
     }
 
     //Pre: name != null && hasContact(name)
     public String getEmail(String name) {
-        return contacts[searchIndex(name)].getEmail();
+        return contacts[searchIndexName(name)].getEmail();
+    }
+
+
+    public String getName(int number) {
+        return contacts[searchIndexNumber(number)].getName();
     }
 
     //Pre: name != null && hasContact(name)
     public void setPhone(String name, int phone) {
-        contacts[searchIndex(name)].setPhone(phone);
+        contacts[searchIndexName(name)].setPhone(phone);
     }
 
     //Pre: name != null && hasContact(name)
     public void setEmail(String name, String email) {
-        contacts[searchIndex(name)].setEmail(email);
+        contacts[searchIndexName(name)].setEmail(email);
     }
 
-    private int searchIndex(String name) {
+    private int searchIndexName(String name) {
         int i = 0;
         int result = -1;
         boolean found = false;
@@ -72,6 +75,20 @@ public class ContactBook {
         if (found) result = i;
         return result;
     }
+
+    private int searchIndexNumber(int number) {
+        int i = 0;
+        int result = -1;
+        boolean found = false;
+        while (i<counter && !found)
+            if (contacts[i].getPhone() == number)
+                found = true;
+            else
+                i++;
+        if (found) result = i;
+        return result;
+    }
+
 
     private void resize() {
         Contact[] tmp = new Contact[2*contacts.length];
@@ -93,4 +110,8 @@ public class ContactBook {
         return contacts[currentContact++];
     }
 
+    public boolean hasNumber(int number) {
+
+        return searchIndexNumber(number) >= 0;
+    }
 }
