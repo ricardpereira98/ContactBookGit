@@ -116,12 +116,14 @@ public class ContactBook {
     }
 
     public boolean hasRepeatedPhone() {
-        for (int i = 0; i < contacts.length; i++) {
-            for (int j = i + 1; j < contacts.length; j++) {
+        if (getNumberOfContacts() == 0)
+            return false;
+        for (int i = 0; i < counter; i++) {
+            for (int j = i + 1; j < counter; j++) {
                 if (contacts[i].getPhone() == contacts[j].getPhone())
                     return true;
             }
         }
-    return false;
+        return false;
     }
 }

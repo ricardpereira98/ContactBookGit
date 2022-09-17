@@ -171,11 +171,9 @@ public class Main {
     }
 
     private static void equalPhone(ContactBook cBook) {
-        if (cBook.getNumberOfContacts() != 0) {
-            if (cBook.hasRepeatedPhone())
-                System.out.println(SAME_PHONE);
-            else System.out.println(DIFF_PHONE);
-        } else System.out.println(DIFF_PHONE);
+        if (cBook.hasRepeatedPhone())
+            System.out.println(SAME_PHONE);
+        else System.out.println(DIFF_PHONE);
     }
 
 }
