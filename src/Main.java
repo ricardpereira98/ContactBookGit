@@ -27,7 +27,8 @@ public class Main {
 
     //NEW
     public static final String PHONE_NOT_EXIST = "Phone number does not exist.";
-    public static final String SAME_PHONE = "There are contacts that share phone numbers.";
+
+    public static final String EQUAL_PHONE = "There are contacts that share phone numbers.";
     public static final String DIFF_PHONE = "All contacts have different phone numbers.";
     public static final String CONTACT_ADDED = "contactBook.Contact added.";
     public static final String CONTACT_REMOVED = "contactBook.Contact removed.";
@@ -172,7 +173,7 @@ public class Main {
 
     private static void equalPhone(ContactBook cBook) {
         if (cBook.hasRepeatedPhone())
-            System.out.println(SAME_PHONE);
+            System.out.println(EQUAL_PHONE);
         else System.out.println(DIFF_PHONE);
     }
 
